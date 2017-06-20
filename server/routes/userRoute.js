@@ -6,6 +6,6 @@ module.exports = (app) => {
   }));
 
   app.post('/api/user/signup', userController.signUp);
-  app.get('/api/user/signin', userController.findUser);
+  app.post('/api/user/signin', userController.findUser);
   
 }

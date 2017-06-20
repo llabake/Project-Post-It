@@ -14,7 +14,7 @@ const Group = require('../models').Group;
       }
       else
       {
-
+          
         Group.create({
           name: req.body.name,
         })
