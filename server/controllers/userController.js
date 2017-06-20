@@ -7,9 +7,6 @@ const salt = bcrypt.genSaltSync(saltRounds);
 // //   const userRouter = express.Router();
 const User = require('../models').User;
 
-
-
-
   module.exports = {
     signUp  (req, res)  {
       if(!req.body.username ){
