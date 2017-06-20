@@ -10,11 +10,11 @@ module.exports = {
     */
     queryInterface.addConstraint('Users', ['email'], {
       type: 'unique',
-      name: 'user_email_username_unique'
+      name: 'user_email_unique'
     });
     queryInterface.addConstraint('Users',  ['username'], {
       type: 'unique',
-      name: 'user_email_username_unique'
+      name: 'user_username_unique'
     });
   },
 
@@ -26,7 +26,7 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-  queryInterface.removeConstraint('Users', 'user_email_username_unique');
-  queryInterface.removeConstraint('Users', 'user_email_username_unique');
+  queryInterface.removeConstraint('Users', 'user_email_unique');
+  queryInterface.removeConstraint('Users', 'user_username_unique');
   }
 };

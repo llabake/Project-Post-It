@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
 
+
 // const routes = function () {
 // //   const userRouter = express.Router();
 const User = require('../models').User;
@@ -13,22 +14,22 @@ const User = require('../models').User;
         res.json({message:"username is required"}).status(400);
       }
       else if (!req.body.firstname ){
-        res.json({message:"First name is required"})
+        res.json({message: "firstname is required"}).status(400);
       }
       else if (!req.body.lastname ){
-        res.json({message:"Last name is required"})
+        res.json({message:"lastname is required"}).status(400);
       }
       else if (!req.body.email ){
-        res.json({message:"Email is required"})
+        res.json({message:"email is required"}).status(400);
       }
       else if (!req.body.password ){
-        res.json({message:"Password is required"})
+        res.json({message:"password is required"}).status(400);
       }
       else if (!req.body.confirmpassword ){
-        res.json({message:"Password is required"})
+        res.json({message:"confirmpassword is required"}).status(400);
       }
       else if (req.body.password != req.body.confirmpassword){
-        res.json({message:"Please ensure the Password match"})
+        res.json({message:"Please ensure the Password match"}).status(400);
       }
       else
       {
@@ -48,8 +49,8 @@ const User = require('../models').User;
   findUser ( req, res) {
     User.findOne({
       where: {
-        username: req.body.username,
-        password: req.body.password      },
+        username: req.body.username    
+      },
     })
     .then((err, user) => {
       if(err)
@@ -57,12 +58,15 @@ const User = require('../models').User;
         res.status(500).send(err)
       }
       else if (!user){
-        res.json({message: 'Incorrect credentials, please check username or password'}).json(400)
+        res.json({message: 'Incorrect credentials, please check username or password'}).status(400);
       }
       else  if (user){
         if (bcrypt.compareSync(req.body.password , user.password)){
-          res.json({message: 'user logged in', user: user})
+          res.json({message: 'user logged in', token: 'token'}),status(200);
 
+        }
+        else {
+          res.json({message: 'Incorrect credentials, please check username or password'}).status(400);
         }
       }
       

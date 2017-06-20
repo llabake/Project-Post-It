@@ -5,7 +5,9 @@ module.exports = (app) => {
     message: 'Welcome to the group controller! You have to sign up',
   }));
 
-  app.post('/api/group', groupController.createGroup);
-  app.get('/api/group/<group id>', groupController.addUser);
+  app.post('/api/group/creategroup', groupController.createGroup);
+  app.post('/api/group/<group id>', groupController.addUser);
   
 }
+
+
