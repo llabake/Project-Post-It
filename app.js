@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-require('./server/routes/userRoutes')(app);
+require('./server/routes/userRoute')(app);
 // require('./server/routes/groupRoutes')(app);
 
 
