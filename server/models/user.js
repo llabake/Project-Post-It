@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes)=>{
       associate: function(models) {
         // associations can be defined here
         User.hasMany(models.Message, {foreignKey: "userId"});
+        User.hasMany(models.Group, {foreignKey: "userId"});
+        
       }
     }
   });

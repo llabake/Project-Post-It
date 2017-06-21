@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 require('./server/routes/userRoute')(app);
-// require('./server/routes/groupRoutes')(app);
+require('./server/routes/groupRoute')(app);
 
 
 
