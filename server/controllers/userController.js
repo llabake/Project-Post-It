@@ -70,7 +70,7 @@ const User = require('../models').User;
       else  if (user){
         if (bcrypt.compareSync(req.body.password , user.password)){
           
-          const token = jwt.sign({data: user}, "secret", {expiresIn: 3600});
+          const token = jwt.sign({data: user}, "secret", {expiresIn: 2100});
 
           res.json({
             message: 'user logged in', 
