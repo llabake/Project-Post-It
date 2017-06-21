@@ -1,14 +1,13 @@
 const express = require('express');
 
-// const routes = function () {
-// //   const userRouter = express.Router();
+
 const Group = require('../models').Group;
 const User = require('../models/').User
 
 
 
 
- module.exports = {
+  module.exports = {
     createGroup  (req, res)  {
       if(!req.body.name ){
         res.json({message:"name is required"}).status(400);
