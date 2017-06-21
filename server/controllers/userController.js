@@ -2,6 +2,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
+const jwt = require("jsonwebtoken"); 
+const secret = "drtguug8*werty+uifghyu"
 
 
 // const routes = function () {
@@ -52,21 +54,36 @@ const User = require('../models').User;
         username: req.body.username    
       },
     })
-    .then((err, user) => {
+    .then((user, err) => {
       if(err)
       {
         res.status(500).send(err)
       }
       else if (!user){
-        res.json({message: 'Incorrect credentials, please check username or password'}).status(400);
+        res.json(
+          {
+            success: false, 
+            message: 'Authentication failed. Incorrect credentials.'
+          }
+        ).status(400);
       }
       else  if (user){
         if (bcrypt.compareSync(req.body.password , user.password)){
-          res.json({message: 'user logged in', token: 'token'}),status(200);
+          
+          const token = jwt.sign({data: user}, "secret", {expiresIn: 3600});
+
+          res.json({
+            message: 'user logged in', 
+            token: token
+          }).status(200);
 
         }
         else {
-          res.json({message: 'Incorrect credentials, please check username or password'}).status(400);
+          res.json(
+            {
+              message: 'Incorrect credentials, please check username or password'
+            }
+            ).status(400);
         }
       }
       
