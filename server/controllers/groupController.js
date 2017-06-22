@@ -7,27 +7,32 @@ const User = require('../models/').User
 
 
 
-
   module.exports = {
     createGroup  (req, res)  {
       if(!req.body.name ){
         res.json({message:"name is required"}).status(400);
       }
       else {
-        User.findOne ({
+        Group.findOne ({
           where: {
-            id: req.user.id    
+            name: req.body.name    
           },
-        }).then((user, err) => {
+        }).then((group, err) => {
           if (err) {
-            return res.json({message: err}).status(400)
+            return res.json({message: err}).status(400);
+
+          } else if (group){
+            return res.json({message: "Group already exists"}).status(400);
 
           } else {
-
-            return res.json({user : user});
-          }
-        })
-
+            Group.create({
+              name: req.body.name,
+              username: req.body.username,
+              userId: req.body.userId
+            })
+        .then(group => res.json({message:"Your group has been created", groupname:group.name,groupid:group.groupId}).status(201)
+        )}
+      });
     }
   }
 }
