@@ -6,11 +6,11 @@
 Bootcamp/LOS 23 PROJECT
 
 
-##Description
+#Description
 
 This is a Node JS project for aspiring developers in Andela. The application is designed to aid communictaion in groups. By making request to the API endpoints,Users can sign up, login, create group and add users to the group created. They can also send broadcast messages to members of their group and also view group messages.
 
-##Installation
+#Installation
 
 Clone the repo git clone https://github.com/llabake/Postit.git and navigate to the project root directory
 
@@ -23,7 +23,7 @@ Set up Database and make migrations by running the following commands.<br>
 - `create necessary tables in the database. 
 - ` sequelize db migrate to apply changes in the table.
 
-##Functionality and Endpoints
+#Functionality and Endpoints
 
 <table>
 <tr>
@@ -69,20 +69,20 @@ Set up Database and make migrations by running the following commands.<br>
 
  
 
-##Usage
+#Usage
 
 The app can be used with Postman,before making requests, make sure the server is running by running nodemon app.js
 
-##References
+#References
 
 https://scotch.io/tutorials/getting-started-with-node-express-and-postgres-using-sequelize#toc-generating-models <br/>
 http://docs.sequelizejs.com/manual/tutorial/models-usage.html </br>
 https://medium.com/@jeffandersen/building-a-node-js-rest-api-with-express-46b0901f29b6</br>
 
-##Author
+#Author
 Lemboye Labake
 
-##License
+#License
 
 </content>
 </snippet>
