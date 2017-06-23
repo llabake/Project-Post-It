@@ -14,6 +14,7 @@
             <h1> Post it </h1>
         </a>
         <nav>
+<!--
             <ul>
                 <li><a href="signup.html"  class="selected">Sign Up</a></li>
                 <li><a href="signin.html">Sign In</a></li>
@@ -21,15 +22,38 @@
            
                 
            </ul>
+-->
         </nav>
     </header>
     <div id = "wrapper">
-        <section >
-            <img src="images/5a2701f7fa3945512566a0d44120e625.jpg" alt="Profile picture of Labake" class="profile-photo"  >
-            <h3>  General Information
-            </h3>
-            <p> Welcome to this environment, if you have been in need of a great communication tool, ensure to browse through and sign up</p>
+        <section  class="welcome">
+
+
+            <h1><p> Welcome to Post It, where communication is improved with simple messaging groups. Sign up to get started</p></h1>
         </section>
+        <section>
+        <form action="index.html" method="post" name="SignupDetail" class="container">
+     
+                <label for="username"> Username:</label>
+                <input type="text" name="username" placeholder="Choose a user name" id="username"><br><br>
+                <label for="email" id="email"> Email:</label>
+                <input type="email" placeholder="Enter your email" name="email"><br><br>
+                <label for="password" id="password"> Password:</label>
+                <input type="password" placeholder="Enter a password" name="password"><br><br>
+                <label for="confirmpassword" id="confirmpassword"> Confirm Password:</label>
+                <input type="password" placeholder="Re enter your password" name="confirmpassword"><br><br>
+                <input type="checkbox" checked="checked"> Remember me
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <div class="clearfix">
+                    <span class="psw">Already have an account  <a href="signin.html">Sign In</a></span>
+
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+         
+
+
+        </form>
+    </section>
     </div>
     <footer>
         <a href="http://twitter.com/1abake"><img src="images/twitter-wrap.png" alt="Twitter Logo" class="social-icon"></a>
