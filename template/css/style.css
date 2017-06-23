@@ -26,6 +26,7 @@ h3 {
     max-width: 940px;
     margin: 0 auto;
     padding: 0 5%;
+
 }
 
 
@@ -37,6 +38,7 @@ heading
     text-align: center;
     margin: 0;
     font-size: 1.2em;
+    
 
     
 }
@@ -46,13 +48,17 @@ h1 {
     font-size: 1.75em;
     font-weight: normal;
     line-height: 0.8em;
+   
+    
 }
 
+/*
 h2 {
     font-size: 0.75em;
     margin: -5px 0 0;
     font-weight: normal;
 }
+*/
 
 /*********************
 navigation
@@ -92,24 +98,13 @@ footer {
 }
 
 .social-icon {
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
     margin: 0 5px;
     border-radius: 100%;
     
     
 }
-
-
-
-footer {
-    text-align: center;
-    padding-top: 50px;
-    font-size: 0.75em;
-    color: #ccc;
-
-}
-
 
     
 
@@ -119,7 +114,7 @@ page about
 
 .profile-photo {
     display: block;
-    max-width: 150px;
+    max-width: 250px;
     margin: 0 auto 30px;
     border-radius: 100%
 }
@@ -160,7 +155,7 @@ nav a.selected, nav a:hover {
 
 /* site body */
 body {
-    background-color: #fff; 
+    background-color: #1e392a; 
     color: #999;
     background-image: url();
     background-size: cover;
