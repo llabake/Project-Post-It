@@ -21,7 +21,7 @@ module.exports = {
           if (err) {
             return res.json({message: err}).status(404)
 
-          } else (user) {
+          } else (user)  => {
               userGroup.create({
                   groupId: req.body.groupId,
                   userId: req.body.userId,
@@ -31,7 +31,7 @@ module.exports = {
                   res.json({message:"user added successfully"}).status(200)
                 })   
             }
-        })
+        });
 
     },
 
