@@ -1,6 +1,9 @@
 <content>
 <snippet>
 
+[![Build Status](https://travis-ci.org/llabake/Project-Post-It.svg?branch=master)](https://travis-ci.org/llabake/Project-Post-It)
+
+
 # Project-Post-It
 
 Bootcamp/LOS 23 PROJECT
