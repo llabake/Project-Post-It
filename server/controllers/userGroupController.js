@@ -77,7 +77,7 @@ module.exports = {
         } else {
             userGroup.findOne ({
                 where: { 
-                    userId: user.id
+                    userId: req.user.id
                 },
             })
             .then((user, err) => {
