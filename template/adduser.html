@@ -15,8 +15,11 @@
         </a>
         <nav>
             <ul>
-
-                <li><a href="creategroup.html" >Create
+<!--
+                <li><a href="signup.html" >Sign Up</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+-->
+                <li><a href="creategroup.html" class="selected" >Create
                 Group</a></li>
                 <li><a href="postmessage.html">Post message</a></li>
                 <li><a href="messageboard.html">Message Board</a></li>
@@ -27,23 +30,28 @@
     <div id = "wrapper">
         <section >
 <!--            <img src="images/5a2701f7fa3945512566a0d44120e625.jpg" alt="Profile picture of Labake" class="profile-photo"  >-->
-            <h3>  Welcome to this environment, if you have been in need of a great communication tool, ensure to browse through and sign up
+            <h3> Welcome to Post it, add users to group to start communicating.
             </h3>
-           
+
         </section>
     </div>
-        <section>
-            <form action="messageboard.html" method="post" name="SignupDetail">
-                <fieldset>
-                <label for="postmessage">  Group Name:</label>
-                <input type="text" name="postmessage" id="postmessage"><br><br>
-                <textarea rows="25" cols="50"> Write message here..... </textarea>
+            <section>
+            <form action="postmessage.html" method="post" name="SignupDetail">
+               
+                    <label for="groupname"> Groupname:</label>
+                    <input type="text" name="groupname" placeholder="Choose a group name" id="groupname"><br><br>
+                    <label for="username"> Username:</label>
+                    <input type="text" name="username" placeholder="Enter username to be added" id="username"><br><br>
+
+
+<!--                    <input type="submit" value="Add user to Group">-->
+                      <button type="submit" class="signupbtn">Add user to Group</button>
+                
+                
                 
 
-<!--               <input type="submit" value="Post Message to Group">-->
-                    <button type="submit" class="signupbtn">Post Message to Group</button>
-                </fieldset>
-           </form>
+
+            </form>
         </section>
     <footer>
         <a href="http://twitter.com/1abake"><img src="images/twitter-wrap.png" alt="Twitter Logo" class="social-icon"></a>
@@ -55,4 +63,3 @@
 
 </body>
 </html>
-
