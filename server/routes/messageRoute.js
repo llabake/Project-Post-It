@@ -6,10 +6,10 @@ module.exports = (app) => {
     message: 'Welcome to the group controller! You have to sign up',
   }));
 
-  app.post('/api/group/<group id>/message', authMiddleware, messageController.sendMessageToGroup);
-  app.get('/api/group/<group id>/messages', authMiddleware, messageController.retrieveMessageFromGroup);
-  app.put('/api/group/<group id>/message', authMiddleware, messageController.updateMessageInGroup);
-  app.delete('/api/group/<group id>/message', authMiddleware, messageController.deleteMessageFromGroup);
+  app.post('/api/group/:group_id/message', authMiddleware, messageController.sendMessageToGroup);
+  app.get('/api/group/:group_id/messages', authMiddleware, messageController.retrieveMessageFromGroup);
+  // app.put('/api/group/<group id>/message', authMiddleware, messageController.updateMessageInGroup);
+  app.delete('/api/group/:group_id/message', authMiddleware, messageController.deleteMessageFromGroup);
 
   
 }

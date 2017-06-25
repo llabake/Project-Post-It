@@ -15,6 +15,9 @@ app.use(bodyParser.json());
 
 require('./server/routes/userRoute')(app);
 require('./server/routes/groupRoute')(app);
+require('./server/routes/userGroupRoute')(app);
+require('./server/routes/messageRoute')(app);
+
 
 
 

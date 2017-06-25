@@ -9,24 +9,29 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    queryInterface.addColumn(
-      'userGroups',
-      'username',
-      Sequelize.STRING
-      );
-    queryInterface.addConstraint('userGroups', ['username'], {
+    queryInterface.addConstraint('userGroups', ['userId'], {
       type: 'FOREIGN KEY',
       references: { //Required field
         table: 'Users',
-        field: 'username'
+        field: 'id'
       },
-      name: 'usergroup_association'
+      name: 'usergroup_user_association'
       // onDelete: 'cascade',
       // onUpdate: 'cascade'
     });
-    queryInterface.addConstraint('userGroups', ['username',"userid"], {
+    queryInterface.addConstraint('userGroups', ['groupId'], {
+      type: 'FOREIGN KEY',
+      references: { //Required field
+        table: 'Groups',
+        field: 'id'
+      },
+      name: 'usergroup_group_association'
+      // onDelete: 'cascade',
+      // onUpdate: 'cascade'
+    });
+    queryInterface.addConstraint('userGroups', ['groupId',"userId"], {
       type: 'unique',
-      name: 'usergroup_username_userid_unique'
+      name: 'usergroup_groupid_userid_unique'
     });
   },
 
@@ -38,7 +43,9 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    queryInterface.removeConstraint('userGroups', 'usergroup_association');
-    queryInterface.removeConstraint('userGroups', 'usergroup_username_userid_unique');
+    queryInterface.removeConstraint('userGroups', 'usergroup_user_association');
+    queryInterface.removeConstraint('userGroups', 'usergroup_group_association');
+    queryInterface.removeConstraint('userGroups', 'usergroup_groupid_userid_unique');
+
   }
 };

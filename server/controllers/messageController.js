@@ -15,31 +15,70 @@ module.exports = {
       }
       else {
           Message.create({
-              groupId: req.params.groupId,
-              userId: req.user,
+              groupId: req.params.group_id,
+              userId: user.id,
               text: req.body.text
             })
             .then((message) => {
-                res.json({message:"message sent successfully", messagebody : "message.text" }).status(200)
+                res.json({
+                    message:"message sent successfully", 
+                    messagebody : message.text, 
+                    messageSentAt: message.createdAt}).status(200)
             })
+            .catch(error => {
+                res.status(400).send(error)
+            });
         }
     },
+    
     retrieveMessageFromGroup (req,res) {
-        if (req.params.groupId) {
-            Group.findAll({
+        if (req.params.group_id) {
+            Message.findAll({
                 where: {
-                    messageId: req.params.messageId
+                    groupId: req.params.group_id
+                    // messageId: req.params.message_id
                 },
             })
-            .then((messages, err) => {
+            .then((message, err) => {
                 if (message) {
-                    res.json({message:message}).status(200)
-                }else if (err){
+                    res.json({message:message.text}).status(200)
+                }else if (!message){
                     res.json({message:" No message for this group "}).status(404)
+                } else {
+                    res.json({message:" Error occured while retrieivng your messages "}).status(400)
                 }
             })
+            .catch(error => {
+                res.status(400).send(error)
+            });
         }
     },
+
+
+    deleteMessageFromGroup (req,res)  {
+        if (req.params.messageId) {
+            Message.destroy({
+                where: {
+                    messageId: req.params.message_id,
+                    groupId: req.params.group_id 
+                },
+            })
+            .then((message, err) => {
+                if (message) {
+                    res.json({message:"message deleted from group"}).status(204)
+                }else if (err){
+                    res.json({message:" message not found "}).status(412)
+                }
+            })
+            .catch(error => {
+                res.status(400).send(error)
+            });
+        }
+    }
+
+}
+
+
     // updateMessageInGroup (req,res){
     //     if (req.params.messageId){
     //         Group.update({
@@ -59,22 +98,3 @@ module.exports = {
 
     //     }
     // },
-    deleteMessageFromGroup (req,res) {
-        if (req.params.messageId) {
-            Group.destroy({
-                where: {
-                    messageId: req.params.messageId
-                },
-            })
-            .then((result, err) => {
-                if (result) {
-                    res.json({message:"user deleted from group"}).status(204)
-                }else if (err){
-                    res.json({message:" user not found "}).status(412)
-                }
-            })
-        }
-    }
-
-}
-

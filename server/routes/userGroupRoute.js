@@ -6,8 +6,8 @@ module.exports = (app) => {
     message: 'Welcome to the group controller! You have to sign up',
   }));
 
-  app.post('/api/group/group id/user>', authMiddleware, userGroupController.addUserToGroup);
-  app.delete('/api/group/<group id>/user>', authMiddleware, permissionMiddleware.deleteUserFromGroup, userGroupController.removeUserFromGroup);
+  app.post('/api/group/:group_id/user/', authMiddleware, userGroupController.addUserToGroup);
+  app.delete('/api/group/:group_id/user/', authMiddleware,  userGroupController.removeUserFromGroup);
 
   
 }
