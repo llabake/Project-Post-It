@@ -16,13 +16,14 @@ module.exports = {
       else {
           Message.create({
               groupId: req.params.group_id,
-              userId: user.id,
+              userId: req.user.id,
               text: req.body.text
             })
             .then((message) => {
                 res.json({
                     message:"message sent successfully", 
                     messagebody : message.text, 
+                    id : message.id,
                     messageSentAt: message.createdAt}).status(200)
             })
             .catch(error => {
@@ -35,6 +36,7 @@ module.exports = {
         if (req.params.group_id) {
             Message.findAll({
                 where: {
+                    userId: req.user.id,
                     groupId: req.params.group_id
                     // messageId: req.params.message_id
                 },
