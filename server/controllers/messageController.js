@@ -79,13 +79,13 @@ module.exports = {
                 .then((usergroup, err) =>{
                     if (usergroup) {
                         Message.findAll({
-                            groupId: req.params.group_id,
-                            messageId: req.params.message_id
+                            groupId: req.params.group_id                           
                         })
-                        .then((message) => {
+                        .then((messages) => {
                             res.json({ 
-                                messagebody : message.text, 
-                                messageSentAt: message.createdAt
+                                messages: messages
+                                // messagebody : messages.text, 
+                                // messageSentAt: messages.createdAt
                             }).status(200)
                         })
                         .catch((error) =>{
@@ -114,7 +114,7 @@ module.exports = {
                 return res.json({message: err}).status(400);
             } else if (!group) {
                 return res.json({message: "Group does not exist"}).status(404);
-            } else if (group) {
+            } else {
                 userGroup.findOne({
                     where: {
                         groupId: req.params.group_id,
@@ -123,30 +123,44 @@ module.exports = {
                 })
                 .then((usergroup, err) =>{
                     if (usergroup) {
-                            if ((req.user.id) == (usergroup.userId) || (req.user.id) == (group.userId)) {
-                            Message.destroy({
-                                where: {
-                                    messageId: message.id,
-                                    groupId: req.params.group_id 
-                                },
-                            })
-                            .then((message, err) => {
-                                if (message) {
-                                    res.json({message:"message deleted from group"}).status(204)
-                                }else if (err){
-                                    res.json({message:" message not found "}).status(412)
+                        Message.findOne({
+                            where: {
+                                messageId: req.params.message.id
+                            },
+                        })
+                        .then((message, err) => {
+                            if (err) {
+                                return res.json({message: err}).status(400);
+                            } else if (!message) {
+                                return res.json({message: "message not found"}).status(404);
+                            } else {
+                                if ((req.user.id) == (usergroup.userId) || (req.user.id) == (group.userId)) {
+                                    Message.destroy({
+                                        where: {
+                                            messageId: message.id,
+                                            groupId: req.params.group_id 
+                                        },
+                                    })
+                                    .then((message, err) => {
+                                        if (err) {
+                                            res.json({message:"error sending your request"}).status(400)
+                                        }else {
+                                            res.json({message:"message deleted from group"}).status(204)
+                                        }
+                                    })
+                                } else { 
+                                    res.json({message: "user is not the admin or the creator of the message"}).status(400)
                                 }
-                            })
-                            .catch(error => {
-                                res.status(400).send(error)
-                            });
-                    
-                        } else if (!usergroup) {
-                            res.json({message: "user is not a member of the group and cant send message to group"}).status(400)
-                        } else {
-                            res.json({message: "error deleting message to group"}).status(400)
-                        }
+                                
+                            }
+                        })
+
+                    } else if (!usergroup) {
+                        res.json({message: "user is not a member of the group"}).status(400)
+                    } else {
+                        res.json({message: "error deleting message from group"}).status(400)
                     }
+                    
                 })
             }
         })
