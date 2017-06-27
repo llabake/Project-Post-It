@@ -128,7 +128,6 @@ page about
     max-width: 100%;
     margin: 0 auto 30px;
 /*    border-radius: 100%;*/
-    float: left;
     
 }
 
@@ -170,7 +169,7 @@ nav a.selected, nav a:hover {
 body {
     background-color: #1e392a; 
     color: #999;
-    background-image: url(images/);
+    background-image: url(images/5a2701f7fa3945512566a0d44120e625.jpg);
     background-size: cover;
 /*    background-size: 100% 710px;*/
 }
