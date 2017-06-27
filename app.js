@@ -21,15 +21,6 @@ require('./server/routes/messageRoute')(app);
 
 
 
-
-// app.use('/api/User/signup',userRoutes); 
-// app.use('/api/User/signin',userRoutes);
-
-
-// app.use('/api/Group',groupRoutes);
-// app.use('/api/Group/groupid/user',groupuserRoutes);
-// app.use('/api/Group//groupid/message',groupRoutes);
-
 app.post('/', function(req, res){
     res.json({message:'Welcome to Postit'});
 });
