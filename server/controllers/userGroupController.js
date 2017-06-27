@@ -75,36 +75,64 @@ module.exports = {
         if (!req.body.username) {
             res.json({message:"username is required"}).status(400);
         } else {
-            userGroup.findOne ({
+            User.findOne ({
                 where: { 
-                    userId: req.user.id
+                    username: req.body.username
                 },
             })
             .then((user, err) => {
                 if (err) {
                     return res.json({message: "error sending your request"}).status(400);
                 } else if (!user) {
-                    return res.json({message: "user does not exist in group"}).status(404);
-                } else  {
-                    if ((req.user.id) != (group.userId) || (req.user.id) != (group.groupid)) {
-                        return res.json({message: "user exists in group, permission to delete user denied for non group admin or user"}).status(403);
-                    } else {
-                        userGroup.destroy({
-                            where: {
-                                username: req.params.username
-                            },
-                        })
-                        .then ((user) => {
-                            res.json({message:"user deleted from group"}).status(204)
-                        })
-                        .catch(error => {
-                            res.json({message:" user not found "}).status(412)
-                        })
-                            // res.json({message: "user exists, proceed to remove user"}).status(200);
-                    }
-                } 
-              
-            })                
+                    return res.json({message: "user not found"}).status(404);
+                } else {
+                    Group.findOne({
+                        where: {
+                            id: req.params.group_id
+                        },
+                    })
+                    .then((group ,err) => {
+                        if (err) {
+                            return res.json({ message: " error handling your request" }).status(400);
+                        } else if(!group) { 
+                            return res.json({ message: "group not found"});
+                        } else {
+                            userGroup.findOne ({
+                                where: { 
+                                    userId: user.id,
+                                    groupId: req.params.group_id
+                                },
+                            })
+                            .then((usergroup, err) => {
+                                if (err) {
+                                    return res.json({message: "error sending your request"}).status(400);
+                                } else  if (!usergroup) {
+                                    return res.json({message: "user does not exist in the group"}).status(404);
+                                } else {
+                                    if ((req.user.id) == (usergroup.userId) || (req.user.id) == (group.userId)) {
+                                        userGroup.destroy({
+                                            where: {
+                                                userId: user.id,
+                                                groupId: req.params.group_id
+                                            },
+                                        })
+                                        .then ((usergroup, err) => {
+                                            if (err){
+                                                res.json({message:  `an error occured error: ${error}`}).status(400)
+                                            } else {
+                                                res.json({message: "user deleted from group"}).status(204)
+                                            }  
+                                        })
+                                    } 
+                                    else {
+                                        return res.json({message: "user exists in group, permission to delete user denied for non group admin or user"}).status(403);
+                                    } 
+                                }
+                            })
+                        }
+                    })
+                }
+            })
         }
     }
 }

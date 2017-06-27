@@ -10,93 +10,145 @@ const userGroup = require('../models/').userGroup;
 
 module.exports = {
     sendMessageToGroup  (req, res)  {
-      if(!req.body.text) {
-        res.json({message:"message text is required"}).status(400);
-      }
-      else {
-          Message.create({
-              groupId: req.params.group_id,
-              userId: req.user.id,
-              text: req.body.text
+        if(!req.body.text) {
+            res.json({message:"message text is required"}).status(400);
+            } else {
+            Group.findOne({
+                where: {
+                    id: req.params.group_id
+                },
             })
-            .then((message) => {
-                res.json({
-                    message:"message sent successfully", 
-                    messagebody : message.text, 
-                    id : message.id,
-                    messageSentAt: message.createdAt}).status(200)
-            })
-            .catch(error => {
-                res.status(400).send(error)
+            .then ((group, err) => {
+                if (err) {
+                    return res.json({message: err}).status(400);
+                } else if (!group) {
+                    return res.json({message: "Group does not exist"}).status(404);
+                } else if (group) {
+                    userGroup.findOne({
+                        where: {
+                            groupId: req.params.group_id,
+                            userId: req.user.id
+                        },
+                    })
+                    .then((usergroup, err) =>{
+                        if (usergroup) {
+                            Message.create({
+                                groupId: req.params.group_id,
+                                userId: req.user.id,
+                                text: req.body.text
+                            })
+                            .then((message) => {
+                                res.json({
+                                    message:"message sent successfully", 
+                                    messagebody : message.text, 
+                                    id : message.id,
+                                    messageSentAt: message.createdAt
+                                }).status(200)
+                            })
+                            .catch((error) =>{
+                                res.status(400).send(error)
+                            });
+                        } else if (!usergroup) {
+                            res.json({message: "user is not a member of the group and cant send message to group"}).status(400)
+                        } else {
+                            res.json({message: "error sending message to group"}).status(400)
+                        }
+                    })
+                }
             });
         }
     },
+    retrieveMessageFromGroup (req, res) {
+        Group.findOne({
+            where: {
+                id: req.params.group_id
+            },
+        })
+        .then ((group, err) => {
+            if (err) {
+                return res.json({message: err}).status(400);
+            } else if (!group) {
+                return res.json({message: "Group does not exist"}).status(404);
+            } else if (group) {
+                userGroup.findOne({
+                    where: {
+                        groupId: req.params.group_id,
+                        userId: req.user.id
+                    },
+                })
+                .then((usergroup, err) =>{
+                    if (usergroup) {
+                        Message.findAll({
+                            groupId: req.params.group_id,
+                            messageId: req.params.message_id
+                        })
+                        .then((message) => {
+                            res.json({ 
+                                messagebody : message.text, 
+                                messageSentAt: message.createdAt
+                            }).status(200)
+                        })
+                        .catch((error) =>{
+                            res.status(400).send(error)
+                        });
+                    } else if (!usergroup) {
+                        res.json({message: "user is not a member of the group and cant read message from group"}).status(400)
+                    } else {
+                        res.json({message: "error retrieving message from group"}).status(400)
+                    }
+                })
+            }
+        });
+
+    },
+
     
-    retrieveMessageFromGroup (req,res) {
-        if (req.params.group_id) {
-            Message.findAll({
-                where: {
-                    userId: req.user.id,
-                    groupId: req.params.group_id
-                    // messageId: req.params.message_id
-                },
-            })
-            .then((message, err) => {
-                if (message) {
-                    res.json({message:message.text}).status(200)
-                }else if (!message){
-                    res.json({message:" No message for this group "}).status(404)
-                } else {
-                    res.json({message:" Error occured while retrieivng your messages "}).status(400)
-                }
-            })
-            .catch(error => {
-                res.status(400).send(error)
-            });
-        }
-    },
-
-
-    deleteMessageFromGroup (req,res)  {
-        if (req.params.messageId) {
-            Message.destroy({
-                where: {
-                    messageId: req.params.message_id,
-                    groupId: req.params.group_id 
-                },
-            })
-            .then((message, err) => {
-                if (message) {
-                    res.json({message:"message deleted from group"}).status(204)
-                }else if (err){
-                    res.json({message:" message not found "}).status(412)
-                }
-            })
-            .catch(error => {
-                res.status(400).send(error)
-            });
-        }
+    deleteMessageFromGroup (req, res) {
+        Group.findOne({
+            where: {
+                id: req.params.group_id
+            },
+        })
+        .then ((group, err) => {
+            if (err) {
+                return res.json({message: err}).status(400);
+            } else if (!group) {
+                return res.json({message: "Group does not exist"}).status(404);
+            } else if (group) {
+                userGroup.findOne({
+                    where: {
+                        groupId: req.params.group_id,
+                        userId: req.user.id
+                    },
+                })
+                .then((usergroup, err) =>{
+                    if (usergroup) {
+                            if ((req.user.id) == (usergroup.userId) || (req.user.id) == (group.userId)) {
+                            Message.destroy({
+                                where: {
+                                    messageId: message.id,
+                                    groupId: req.params.group_id 
+                                },
+                            })
+                            .then((message, err) => {
+                                if (message) {
+                                    res.json({message:"message deleted from group"}).status(204)
+                                }else if (err){
+                                    res.json({message:" message not found "}).status(412)
+                                }
+                            })
+                            .catch(error => {
+                                res.status(400).send(error)
+                            });
+                    
+                        } else if (!usergroup) {
+                            res.json({message: "user is not a member of the group and cant send message to group"}).status(400)
+                        } else {
+                            res.json({message: "error deleting message to group"}).status(400)
+                        }
+                    }
+                })
+            }
+        })
     }
-
 }
-
-
-    // updateMessageInGroup (req,res){
-    //     if (req.params.messageId){
-    //         Group.update({
-    //             where:{
-    //                 // groupId: req.params.groupId,
-    //                 // userId: req.user,
-    //                 text: req.body.text
-    //             },
-    //         })
-    //         .then((message,err) => {
-    //             if (message) {
-    //                 res.json({message:"message.text"}).status(204)
-    //             } else if (err){
-    //                 res.json({message:" No message for this group "}).status(404)
-    //             }
-    //         ))
-
-    //     }
-    // },
