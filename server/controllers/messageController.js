@@ -125,7 +125,7 @@ module.exports = {
                     if (usergroup) {
                         Message.findOne({
                             where: {
-                                messageId: req.params.message.id
+                                id: req.body.messageId
                             },
                         })
                         .then((message, err) => {
@@ -137,7 +137,7 @@ module.exports = {
                                 if ((req.user.id) == (usergroup.userId) || (req.user.id) == (group.userId)) {
                                     Message.destroy({
                                         where: {
-                                            messageId: message.id,
+                                            id: req.body.messageId,
                                             groupId: req.params.group_id 
                                         },
                                     })
