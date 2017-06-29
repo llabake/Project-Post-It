@@ -16,11 +16,7 @@
     "dialect": "postgress"
   },
   "production": {
-    "username": "postgres",
-    "password": "girl",
-    "database": "Project-Post-It",
-    "host": "127.0.0.1",
-    "port": "5433",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL"
+
   }
 }
