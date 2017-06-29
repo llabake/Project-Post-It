@@ -1,7 +1,8 @@
 const express = require('express'),
     sequelize = require('sequelize'),
     bodyParser =require ('body-parser'),
-    logger = require('morgan');
+    logger = require('morgan'),
+    db = require('./server/models/index');
     
 
 // const user = require('./models/user.js');
@@ -21,6 +22,7 @@ require('./server/routes/messageRoute')(app);
 
 
 
+
 app.post('/', function(req, res){
     res.json({message:'Welcome to Postit'});
 });
@@ -29,6 +31,13 @@ app.post('/users', function(req, res){
     res.json({message:'Welcome to Postit. You should signup to enjoy this environment'});
 });
 
-app.listen(port,() => {
+
+db.sequelize.sync().then(()=>{
+    app.listen(port,() => {
     console.log(`Server running on port ${port}`)
 });
+
+})
+// app.listen(port,() => {
+//     console.log(`Server running on port ${port}`)
+// });
