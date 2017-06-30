@@ -1,63 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-   <head>
+<head>
     <meta charset="utf-8">
-    <title> Learning | Happygirl  </title>
+    <title> Post it </title>
+    <!--
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
+-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
+
+    <nav>
+        <div class="nav-wrapper green darken-4">
+            <a href="index.html" class="brand-logo">Post It</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="creategroup.html">Create
+                Group</a></li>
+                <li><a href="adduser.html">Add User To
+                Group</a></li>
+                <li><a href="postmessage.html">Post message</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="row good">
+        <form  action="adduser.html" class="col s12" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" type="text" placeholder="Enter a group name" class="validate">
+                    <label for="username">Groupname</label>
+                </div>
+            </div>
+
+         
+            <a class="waves-effect waves-light btn grey darken-4">Create Group</a>
+
+        </form>
+    </div>
+<!--
     <header>
         <a href="index.html" id="logo">
             <h1> Post it </h1>
         </a>
         <nav>
             <ul>
-<!--
-                <li><a href="signup.html" >Sign Up</a></li>
-                <li><a href="signin.html">Sign In</a></li>
--->
-                <li><a href="creategroup.html" class="selected" >Create
+   
+                <li><a href="creategroup.html" class="selected">Create
                 Group</a></li>
-                 <li><a href="adduser.html"  >Add User To
+                <li><a href="adduser.html">Add User To
                 Group</a></li>
                 <li><a href="postmessage.html">Post message</a></li>
                 <li><a href="messageboard.html">Message Board</a></li>
-                
-           </ul>
+
+            </ul>
         </nav>
     </header>
-    <div id = "wrapper">
-        <section >
+-->
+<!--
+    <div id="wrapper">
+        <section>
 
             <h3> Welcome to Post, create a new group to start communicating.
             </h3>
 
         </section>
     </div>
-            <section>
-            <form action="adduser.html" method="post" name="SignupDetail">
-               
-                    <label for="username"> Groupname:</label>
-                    <input type="text" name="username" placeholder="Choose a user name" id="username"><br><br>
+    <section>
+        <form action="adduser.html" method="post" name="SignupDetail">
 
-<!--                   <button type="submit" class="signupbtn">Create Group</button>-->
-                
-                       <div class="clearfix container">
-                    <button type="submit" class="signupbtn">Create Group</button>
-                </div>
-                
+            <label for="username"> Groupname:</label>
+            <input type="text" name="username" placeholder="Choose a user name" id="username"><br><br>
+
+                               <button type="submit" class="signupbtn">Create Group</button>
+
+            <div class="clearfix container">
+                <button type="submit" class="signupbtn">Create Group</button>
+            </div>
 
 
-            </form>
-        </section>
-    <footer>
-        <a href="http://twitter.com/1abake"><img src="images/twitter-wrap.png" alt="Twitter Logo" class="social-icon"></a>
-        <a href="http://facebook.com/labakelemboye"><img src="images/facebook-wrap.png" alt="Facebook Logo" class="social-icon"></a>
-        
-        <p> &copy;  2017 HappygirlO1. </p>
+
+        </form>
+    </section>
+-->
+    
+    <footer class="page-footer">
+
+        <div class="footer-copyright green darken-4">
+            <div class="container green darken-4">
+                © 2017 Happy Girl World
+<!--                <a class="grey-text text-lighten-4 right " href="#!">More Links</a>-->
+                <a href="http://twitter.com/postitapp"><img src="images/twitter-wrap.png" alt="Twitter Logo" class=" grey-text text-lighten-4 right social-icon"></a>
+                <a href="http://facebook.com/postitapp"><img src="images/facebook-wrap.png" alt="Facebook Logo" class=" grey-text text-lighten-4 right social-icon"></a>
+            </div>
+        </div>
     </footer>
 
 

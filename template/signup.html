@@ -1,14 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title> Learning | Happygirl </title>
+    <title> Post it </title>
+    <!--
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
+-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
+    <nav>
+        <div class="nav-wrapper green darken-4">
+            <a href="index.html" class="brand-logo">Post It</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row good">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Enter your first name" id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" placeholder="Enter your last name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" type="text" placeholder="Enter a username" class="validate">
+                    <label for="username">Username</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" placeholder="Enter your password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="confirm-password" type="password" placeholder="Enter your password again" class="validate">
+                    <label for="confirm-password">Confirm Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" placeholder="Enter your email">
+                    <label for="email">Email</label>
+                </div>
+            </div><br>
+            <div class="row">
+                <p>
+                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+                    <label for="filled-in-box">Remember me</label>
+
+                </p>
+            </div><br>
+
+            <div>
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <p>
+                    <span class="validate">Already have an account  <a href="signin.html">Sign In</a></span>
+
+
+                </p>
+            </div>
+            <!--
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            <div class="clearfix">
+                <span class="psw">Already have an account  <a href="signin.html">Sign In</a></span>
+
+                <button type="submit" class="signupbtn">Sign Up</button>
+            </div>
+-->
+            <a class="waves-effect waves-light btn grey darken-4">Sign Up</a>
+
+        </form>
+    </div>
+
+
+    <footer class="page-footer">
+
+        <div class="footer-copyright green darken-4">
+            <div class="container green darken-4">
+                © 2017 Happy Girl World
+<!--                <a class="grey-text text-lighten-4 right " href="#!">More Links</a>-->
+                <a href="http://twitter.com/postitapp"><img src="images/twitter-wrap.png" alt="Twitter Logo" class=" grey-text text-lighten-4 right social-icon"></a>
+                <a href="http://facebook.com/postitapp"><img src="images/facebook-wrap.png" alt="Facebook Logo" class=" grey-text text-lighten-4 right social-icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.slider').slider();
+        });
+    </script>
+
+
+    <!--
     <header>
         <a href="index.html" id="logo">
             <h1> Post it </h1>
@@ -24,12 +130,9 @@
             </ul>
         </nav>
     </header>
-    <div id="wrapper">
-        <section>
-<!--            <img src="images/5a2701f7fa3945512566a0d44120e625.jpg" alt="Profile picture of Labake" class="profile-photo">-->
-            <h3> Welcome to Post It, create an account to get started.
-            </h3>
-        </section>
+-->
+    <!--    <div id="wrapper">-->
+    <!--
     </div>
 
     <section>
@@ -59,6 +162,7 @@
 
         <p> &copy; 2017 HappygirlO1. </p>
     </footer>
+-->
 
 
 </body>

@@ -1,49 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-   <head>
+<head>
     <meta charset="utf-8">
-    <title> Learning | Happygirl  </title>
+    <title> Post it </title>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
+
+    <nav>
+        <div class="nav-wrapper green darken-4">
+            <a href="index.html" class="brand-logo">Post It</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="creategroup.html">Create
+                Group</a></li>
+                <li><a href="adduser.html">Add User To
+                Group</a></li>
+                <li><a href="messageboard.html">Message Board
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row good">
+        <form action="messageboard.html" class="col s12" method="post">
+            <div class="row">
+
+                <div class="input-field col s12">
+                    <div>Choose a group to send message to</div>
+                    <input list="groups" />
+                    <datalist id="groups">
+                    <option value="30gc">
+                    <option value="LOS/23">
+                    <option value="5th Floor">
+                    <option value="Cars">
+                    <option value="Soccer">
+                    </datalist>
+                </div>
+            </div>
+              <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Textarea</label>
+                        </div>
+                    </div>
+
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Textarea</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <a class="waves-effect waves-light btn grey darken-4">Post Message </a>
+
+        </form>
+    </div>
+    <!--
     <header>
         <a href="index.html" id="logo">
             <h1> Post it </h1>
         </a>
         <nav>
             <ul>
-
-                <li><a href="creategroup.html" >Create
+   
+                <li><a href="creategroup.html" class="selected">Create
+                Group</a></li>
+                <li><a href="adduser.html">Add User To
                 Group</a></li>
                 <li><a href="postmessage.html">Post message</a></li>
                 <li><a href="messageboard.html">Message Board</a></li>
-                
-           </ul>
+
+            </ul>
         </nav>
     </header>
-    <div id = "wrapper">
-        <section >
-<!--            <img src="images/5a2701f7fa3945512566a0d44120e625.jpg" alt="Profile picture of Labake" class="profile-photo"  >-->
-            <h3>  Welcome to this environment, if you have been in need of a great communication tool, ensure to browse through and sign up
+-->
+    <!--
+    <div id="wrapper">
+        <section>
+
+            <h3> Welcome to Post, create a new group to start communicating.
             </h3>
-           
+
         </section>
     </div>
-        <section>
-            <form action="messageboard.html" method="post" name="SignupDetail">
-                <fieldset>
-                <label for="postmessage">  Group Name:</label>
-                <input type="text" name="postmessage" id="postmessage"><br><br>
-                <textarea rows="25" cols="50"> Write message here..... </textarea>
-                
+    <section>
+        <form action="adduser.html" method="post" name="SignupDetail">
 
-<!--               <input type="submit" value="Post Message to Group">-->
-                    <button type="submit" class="signupbtn">Post Message to Group</button>
-                </fieldset>
-           </form>
+            <label for="username"> Groupname:</label>
+            <input type="text" name="username" placeholder="Choose a user name" id="username"><br><br>
+
+                               <button type="submit" class="signupbtn">Create Group</button>
+
+            <div class="clearfix container">
+                <button type="submit" class="signupbtn">Create Group</button>
+            </div>
+
+
+
+        </form>
+    </section>
+-->
+
+    <footer class="page-footer">
+
+        <div class="footer-copyright green darken-4">
+            <div class="container green darken-4">
+                © 2017 Happy Girl World
+                <!--                <a class="grey-text text-lighten-4 right " href="#!">More Links</a>-->
+                <a href="http://twitter.com/postitapp"><img src="images/twitter-wrap.png" alt="Twitter Logo" class=" grey-text text-lighten-4 right social-icon"></a>
+                <a href="http://facebook.com/postitapp"><img src="images/facebook-wrap.png" alt="Facebook Logo" class=" grey-text text-lighten-4 right social-icon"></a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
+
+
+<!--
+
+    <div id = "wrapper">
+        <section >
+
+            <h3> Welcome to Post it, add users to group to start communicating.
+            </h3>
+
+        </section>
+    </div>
+            <section>
+            <form action="postmessage.html" method="post" name="SignupDetail">
+               
+                    <label for="groupname"> Groupname:</label>
+                    <input type="text" name="groupname" placeholder="Choose a group name" id="groupname"><br><br>
+                    <label for="username"> Username:</label>
+                    <input type="text" name="username" placeholder="Enter username to be added" id="username"><br><br>
+
+
+
+                      <button type="submit" class="signupbtn">Add user to Group</button>
+          
+
+            </form>
         </section>
     <footer>
         <a href="http://twitter.com/1abake"><img src="images/twitter-wrap.png" alt="Twitter Logo" class="social-icon"></a>
@@ -54,5 +167,4 @@
 
 
 </body>
-</html>
-
+</html>-->
