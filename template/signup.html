@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title> Post it </title>
-    <!--
+    
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
--->
+<!--    <link rel="stylesheet" type="text/css" href="css/responsive.css">-->
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,65 +19,67 @@
         <div class="nav-wrapper green darken-4">
             <a href="index.html" class="brand-logo">Post It</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="signin.html">Sign In</a></li>
             </ul>
         </div>
     </nav>
-    <div class="row good">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="Enter your first name" id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
+    <br><br>
+    <div>
+        <div class="row good">
+            <form class="col s12" >
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Enter your first name" id="first_name" type="text" class="validate">
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" placeholder="Enter your last name" type="text" class="validate">
+                        <label for="last_name">Last Name</label>
+                    </div>
                 </div>
-                <div class="input-field col s6">
-                    <input id="last_name" placeholder="Enter your last name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" type="text" placeholder="Enter a username" class="validate">
+                        <label for="username">Username</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="username" type="text" placeholder="Enter a username" class="validate">
-                    <label for="username">Username</label>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" placeholder="Enter your password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="password" placeholder="Enter your password" class="validate">
-                    <label for="password">Password</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="confirm-password" type="password" placeholder="Enter your password again" class="validate">
+                        <label for="confirm-password">Confirm Password</label>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" placeholder="Enter your email">
+                        <label for="email">Email</label>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+                        <label for="filled-in-box">Remember me</label>
 
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="confirm-password" type="password" placeholder="Enter your password again" class="validate">
-                    <label for="confirm-password">Confirm Password</label>
+                    </p>
+                </div><br>
+
+                <div>
+                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                    <p>
+                        <span class="validate">Already have an account  <a href="signin.html">Sign In</a></span>
+
+
+                    </p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" type="email" class="validate" placeholder="Enter your email">
-                    <label for="email">Email</label>
-                </div>
-            </div><br>
-            <div class="row">
-                <p>
-                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
-                    <label for="filled-in-box">Remember me</label>
-
-                </p>
-            </div><br>
-
-            <div>
-                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                <p>
-                    <span class="validate">Already have an account  <a href="signin.html">Sign In</a></span>
-
-
-                </p>
-            </div>
-            <!--
+                <!--
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
             <div class="clearfix">
                 <span class="psw">Already have an account  <a href="signin.html">Sign In</a></span>
@@ -85,9 +87,10 @@
                 <button type="submit" class="signupbtn">Sign Up</button>
             </div>
 -->
-            <a class="waves-effect waves-light btn grey darken-4">Sign Up</a>
+                <a class="waves-effect waves-light btn grey darken-4">Sign Up</a>
 
-        </form>
+            </form>
+        </div>
     </div>
 
 
@@ -96,7 +99,7 @@
         <div class="footer-copyright green darken-4">
             <div class="container green darken-4">
                 © 2017 Happy Girl World
-<!--                <a class="grey-text text-lighten-4 right " href="#!">More Links</a>-->
+                <!--                <a class="grey-text text-lighten-4 right " href="#!">More Links</a>-->
                 <a href="http://twitter.com/postitapp"><img src="images/twitter-wrap.png" alt="Twitter Logo" class=" grey-text text-lighten-4 right social-icon"></a>
                 <a href="http://facebook.com/postitapp"><img src="images/facebook-wrap.png" alt="Facebook Logo" class=" grey-text text-lighten-4 right social-icon"></a>
             </div>
@@ -107,62 +110,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 
 
-    <script>
-        $(document).ready(function() {
-            $('.slider').slider();
-        });
-    </script>
-
-
-    <!--
-    <header>
-        <a href="index.html" id="logo">
-            <h1> Post it </h1>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="signup.html" class="selected">Sign Up</a></li>
-                <li><a href="signin.html">Sign In</a></li>
-                <li><a href="creategroup.html">Create
-                Group</a></li>
-
-
-            </ul>
-        </nav>
-    </header>
--->
-    <!--    <div id="wrapper">-->
-    <!--
-    </div>
-
-    <section>
-        <form action="index.html" method="post" name="SignupDetail" class="container">
-          
-                <label for="username"> Username:</label>
-                <input type="text" name="username" placeholder="Choose a user name" id="username"><br><br>
-                <label for="email" id="email"> Email:</label>
-                <input type="email" placeholder="Enter your email" name="email"><br><br>
-                <label for="password" id="password"> Password:</label>
-                <input type="password" placeholder="Enter a password" name="password"><br><br>
-                <label for="confirmpassword" id="confirmpassword"> Confirm Password:</label>
-                <input type="password" placeholder="Re enter your password" name="confirmpassword"><br><br>
-                <input type="checkbox" checked="checked"> Remember me
-                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                <div class="clearfix">
-                    <span class="psw">Already have an account  <a href="signin.html">Sign In</a></span>
-
-                    <button type="submit" class="signupbtn">Sign Up</button>
-                </div>
-
-        </form>
-    </section>
-    <footer>
-        <a href="http://twitter.com/1abake"><img src="images/twitter-wrap.png" alt="Twitter Logo" class="social-icon"></a>
-        <a href="http://facebook.com/labakelemboye"><img src="images/facebook-wrap.png" alt="Facebook Logo" class="social-icon"></a>
-
-        <p> &copy; 2017 HappygirlO1. </p>
-    </footer>
--->
 
 
 </body>
