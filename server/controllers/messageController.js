@@ -11,7 +11,7 @@ const userGroup = require('../models/').userGroup;
 module.exports = {
     sendMessageToGroup  (req, res)  {
         if(!req.body.text) {
-            res.json({message:"message text is required"}).status(400);
+            res.status(400).json({message:"message text is required"});
             } else {
             Group.findOne({
                 where: {
@@ -20,9 +20,9 @@ module.exports = {
             })
             .then ((group, err) => {
                 if (err) {
-                    return res.json({message: err}).status(400);
+                    return res.status(400).json({message: err});
                 } else if (!group) {
-                    return res.json({message: "Group does not exist"}).status(404);
+                    return res.status(404).json({message: "Group does not exist"});
                 } else if (group) {
                     userGroup.findOne({
                         where: {
@@ -49,9 +49,9 @@ module.exports = {
                                 res.status(400).send(error)
                             });
                         } else if (!usergroup) {
-                            res.json({message: "user is not a member of the group and cant send message to group"}).status(400)
+                            res.status(400).json({message: "user is not a member of the group and cant send message to group"})
                         } else {
-                            res.json({message: "error sending message to group"}).status(400)
+                            res.status(400).json({message: "error sending message to group"})
                         }
                     })
                 }
@@ -66,9 +66,9 @@ module.exports = {
         })
         .then ((group, err) => {
             if (err) {
-                return res.json({message: err}).status(400);
+                return res.status(400).json({message: err});
             } else if (!group) {
-                return res.json({message: "Group does not exist"}).status(404);
+                return res.status(404).json({message: "Group does not exist"});
             } else if (group) {
                 userGroup.findOne({
                     where: {
@@ -92,9 +92,9 @@ module.exports = {
                             res.status(400).send(error)
                         });
                     } else if (!usergroup) {
-                        res.json({message: "user is not a member of the group and cant read message from group"}).status(400)
+                        res.status(400).json({message: "user is not a member of the group and cant read message from group"})
                     } else {
-                        res.json({message: "error retrieving message from group"}).status(400)
+                        res.status(400).json({message: "error retrieving message from group"})
                     }
                 })
             }
@@ -111,9 +111,9 @@ module.exports = {
         })
         .then ((group, err) => {
             if (err) {
-                return res.json({message: err}).status(400);
+                return res.status(400).json({message: err});
             } else if (!group) {
-                return res.json({message: "Group does not exist"}).status(404);
+                return res.status(404).json({message: "Group does not exist"});
             } else {
                 userGroup.findOne({
                     where: {
@@ -130,9 +130,9 @@ module.exports = {
                         })
                         .then((message, err) => {
                             if (err) {
-                                return res.json({message: err}).status(400);
+                                return res.status(400).json({message: err});
                             } else if (!message) {
-                                return res.json({message: "message not found"}).status(404);
+                                return res.status(404).json({message: "message not found"});
                             } else {
                                 if ((req.user.id) == (usergroup.userId) || (req.user.id) == (group.userId)) {
                                     Message.destroy({
@@ -143,22 +143,22 @@ module.exports = {
                                     })
                                     .then((message, err) => {
                                         if (err) {
-                                            res.json({message:"error sending your request"}).status(400)
+                                            res.status(400).json({message:"error sending your request"})
                                         }else {
-                                            res.json({message:"message deleted from group"}).status(204)
+                                            res.status(204).json({message:"message deleted from group"})
                                         }
                                     })
                                 } else { 
-                                    res.json({message: "user is not the admin or the creator of the message"}).status(400)
+                                    res.status(400).json({message: "user is not the admin or the creator of the message"})
                                 }
                                 
                             }
                         })
 
                     } else if (!usergroup) {
-                        res.json({message: "user is not a member of the group"}).status(400)
+                        res.status(400).json({message: "user is not a member of the group"})
                     } else {
-                        res.json({message: "error deleting message from group"}).status(400)
+                        res.status(400).json({message: "error deleting message from group"})
                     }
                     
                 })

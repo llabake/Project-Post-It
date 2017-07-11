@@ -35,17 +35,30 @@ const User = require('../models').User;
       }
       else
       {
-
-        User.create({
-          username: req.body.username,
-          email: req.body.email,
-          password: bcrypt.hashSync(req.body.password, salt),
-          firstName: req.body.firstname,
-          lastName: req.body.lastname
-
+        User.findOne({
+          where: {
+            username: req.body.username,
+            email: req.body.email 
+          },
         })
-        .then(user => res.status(201).send("Your account has been created"))
-        .catch(error => res.status(400).send(error));
+        .then((user, err) => {
+          if (err.name === SequelizeUniqueConnstraintError) {
+            res.status(409).send('User already exists')
+          } else if (err){
+            res.status(400)
+          } else {
+            User.create({
+              username: req.body.username,
+              email: req.body.email,
+              password: bcrypt.hashSync(req.body.password, salt),
+              firstName: req.body.firstname,
+              lastName: req.body.lastname
+           })
+           .then(user => res.status(201).send("Your account has been created"))
+           .catch(error => res.status(400).send(error));
+          }
+              
+        })
       }
     },
   findUser ( req, res) {
@@ -79,11 +92,12 @@ const User = require('../models').User;
 
         }
         else {
-          res.json(
+          res.status(400)
+          .json(
             {
               message: 'Incorrect credentials, please check username or password'
             }
-            ).status(400);
+            );
         }
       }
       
