@@ -10,7 +10,7 @@ const userGroup = require('../models/').userGroup;
 module.exports = {
     addUserToGroup  (req, res)  {
         if(!req.body.username) {
-            res.json({message:"username is required"}).status(400);
+            res.status(400).json({message:"username is required"});
         }
         else {
             Group.findOne ({
@@ -19,12 +19,12 @@ module.exports = {
                 },
             }).then((group, err) => {
                 if (err) {
-                    return res.json({message: err}).status(400);
+                    return res.status(400).json({message: err});
                 } else if (!group) {
-                    return res.json({message: "Group does not exist"}).status(404);
+                    return res.status(404).json({message: "Group does not exist"});
                 }  else if (group) {
                     if ((req.user.id) != (group.userId)){
-                        return res.json({message: "Group exists, permission to add user denied for non group admin"}).status(403);
+                        return res.status(403).json({message: "Group exists, permission to add user denied for non group admin"});
                     } else {
                         // Group admin is current user
                         User.findOne ({
@@ -33,17 +33,17 @@ module.exports = {
                             },
                         }).then((user, err) => {
                             if (err) {
-                                return res.json({message: err}).status(400)
+                                return res.status(400).json({message: err})
                             } else if (user) {
                                 userGroup.findOne({
                                     where: {
                                         groupId: req.params.group_id,
                                         userId: user.id
-                                    }
+                                    },
                                 })
                                 .then((usergroup, err) => {
                                     if (usergroup) {
-                                         res.json({message: "user already in this group"}).status(409)
+                                         res.status(409).json({message: "user already in this group"})
                                     } else {
                                         userGroup.create({
                                             groupId: req.params.group_id,
@@ -53,7 +53,7 @@ module.exports = {
                                             if (err) {
                                                 res.status(400).json({msg: error})
                                             } else if (usergroup) {
-                                                res.json({message: "user added successfully", usergroup}).status(201)
+                                                res.status(201).json({message: "user added successfully", usergroup})
                                             }
                                         })
                                         // .catch(error => res.status(400).json({msg: error}))
@@ -61,7 +61,7 @@ module.exports = {
                                 })
                          
                             } else {
-                                return res.json({message: "User not found"}).status(404)
+                                return res.status(404).json({message: "User not found"})
                             }
                         })
                     }  
@@ -73,7 +73,7 @@ module.exports = {
     
     removeUserFromGroup (req, res) {
         if (!req.body.username) {
-            res.json({message:"username is required"}).status(400);
+            res.status(400).json({message:"username is required"});
         } else {
             User.findOne ({
                 where: { 
@@ -82,9 +82,9 @@ module.exports = {
             })
             .then((user, err) => {
                 if (err) {
-                    return res.json({message: "error sending your request"}).status(400);
+                    return res.status(400).json({message: "error sending your request"});
                 } else if (!user) {
-                    return res.json({message: "user not found"}).status(404);
+                    return res.status(404).json({message: "user not found"});
                 } else {
                     Group.findOne({
                         where: {
@@ -93,7 +93,7 @@ module.exports = {
                     })
                     .then((group ,err) => {
                         if (err) {
-                            return res.json({ message: " error handling your request" }).status(400);
+                            return res.status(400).json({ message: " error handling your request" });
                         } else if(!group) { 
                             return res.json({ message: "group not found"});
                         } else {
@@ -105,9 +105,9 @@ module.exports = {
                             })
                             .then((usergroup, err) => {
                                 if (err) {
-                                    return res.json({message: "error sending your request"}).status(400);
+                                    return res.status(400).json({message: "error sending your request"});
                                 } else  if (!usergroup) {
-                                    return res.json({message: "user does not exist in the group"}).status(404);
+                                    return res.status(404).json({message: "user does not exist in the group"});
                                 } else {
                                     if ((req.user.id) == (usergroup.userId) || (req.user.id) == (group.userId)) {
                                         userGroup.destroy({
@@ -118,14 +118,14 @@ module.exports = {
                                         })
                                         .then ((usergroup, err) => {
                                             if (err){
-                                                res.json({message:  `an error occured error: ${error}`}).status(400)
+                                                res.status(400).json({message:  `an error occured error: ${error}`})
                                             } else {
-                                                res.json({message: "user deleted from group"}).status(204)
+                                                res.status(204).json({message: "user deleted from group"})
                                             }  
                                         })
                                     } 
                                     else {
-                                        return res.json({message: "user exists in group, permission to delete user denied for non group admin or user"}).status(403);
+                                        return res.status(403).json({message: "user exists in group, permission to delete user denied for non group admin or user"});
                                     } 
                                 }
                             })
