@@ -42,7 +42,7 @@ const User = require('../models').User;
           },
         })
         .then((user, err) => {
-          if (err.name === SequelizeUniqueConnstraintError) {
+          if (user) {
             res.status(409).send('User already exists')
           } else if (err){
             res.status(400)
