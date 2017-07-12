@@ -3,6 +3,8 @@
 
 [![Build Status](https://travis-ci.org/llabake/Project-Post-It.svg?branch=master)](https://travis-ci.org/llabake/Project-Post-It)
 
+[![Coverage Status](https://coveralls.io/repos/github/llabake/Project-Post-It/badge.svg?branch=master)](https://coveralls.io/github/llabake/Project-Post-It?branch=master)
+
 
 # Project-Post-It
 
