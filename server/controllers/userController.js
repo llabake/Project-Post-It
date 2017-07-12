@@ -35,30 +35,20 @@ const User = require('../models').User;
       }
       else
       {
-        User.findOne({
-          where: {
-            username: req.body.username,
-            email: req.body.email 
-          },
+        User.create({
+          username: req.body.username,
+          email: req.body.email,
+          password: bcrypt.hashSync(req.body.password, salt),
+          firstName: req.body.firstname,
+          lastName: req.body.lastname
         })
-        .then((user, err) => {
-          if (user) {
-            res.status(409).send('User already exists')
-          } else if (err){
-            res.status(400)
-          } else {
-            User.create({
-              username: req.body.username,
-              email: req.body.email,
-              password: bcrypt.hashSync(req.body.password, salt),
-              firstName: req.body.firstname,
-              lastName: req.body.lastname
-           })
-           .then(user => res.status(201).send("Your account has been created"))
-           .catch(error => res.status(400).send(error));
+        .then(user => res.status(201).json({message: "Your account has been created"}))
+        .catch(error => { 
+          if(error.name === 'SequelizeUniqueConstraintError') {
+            res.status(400).json({message: 'User already exists'});
           }
-              
-        })
+          res.status(400).send(error);
+        });
       }
     },
   findUser ( req, res) {
