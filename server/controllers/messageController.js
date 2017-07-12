@@ -1,15 +1,11 @@
-const express = require('express');
+import express from 'express';
 
 // const routes = function () {
-// //   const userRouter = express.Router();
-const Group = require('../models/').Group;
-const User = require('../models/').User;
-const Message = require('../models/').Message;
-const userGroup = require('../models/').userGroup;
-
+// //   const userRouter = express.Router();S
+import { User, Group, userGroup, Message } from '../models';
 
 module.exports = {
-    sendMessageToGroup  (req, res)  {
+    sendMessageToGroup  (req, res)  {S
         if(!req.body.text) {
             res.status(400).json({message:"message text is required"});
             } else {

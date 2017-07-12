@@ -1,14 +1,14 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
+import express from 'express';
+import bcrypt from 'bcrypt';
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
-const jwt = require("jsonwebtoken"); 
+import jwt from "jsonwebtoken"; 
 const secret = "drtguug8*werty+uifghyu"
 
 
 // const routes = function () {
 // //   const userRouter = express.Router();
-const User = require('../models').User;
+import { User } from '../models';
 
   module.exports = {
     signUp  (req, res)  {

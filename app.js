@@ -1,8 +1,8 @@
-const express = require('express'),
-    sequelize = require('sequelize'),
-    bodyParser =require ('body-parser'),
-    logger = require('morgan'),
-    db = require('./server/models/index');
+import express from 'express';
+import sequelize from 'sequelize';
+import bodyParser from 'body-parser';
+import logger from 'morgan';
+import db from './server/models';
     
 
 // const user = require('./models/user.js');

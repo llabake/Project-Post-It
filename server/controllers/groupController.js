@@ -1,9 +1,9 @@
-const express = require('express');
+import express  from 'express';
 
 // const routes = function () {
 // //   const userRouter = express.Router();
-const Group = require('../models').Group;
-const User = require('../models/').User
+import { User, Group } from '../models';
+
 
 
 
