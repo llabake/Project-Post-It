@@ -7,6 +7,7 @@ const express = require('express'),
 
 // const user = require('./models/user.js');
 const app = express();
+
 app.use(logger('dev'));
 
 const port = process.env.PORT || 3000;
@@ -35,9 +36,5 @@ app.post('/users', function(req, res){
 db.sequelize.sync().then(()=>{
     app.listen(port,() => {
     console.log(`Server running on port ${port}`)
-});
-
+    });
 })
-// app.listen(port,() => {
-//     console.log(`Server running on port ${port}`)
-// });
