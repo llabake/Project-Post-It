@@ -17,16 +17,17 @@ const app = express();
 app.use(logger('dev'));
 
 const port = process.env.PORT || 3000;
-const compiler = webpack(webpackConfig);
-
 
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+const compiler = webpack(webpackConfig);
+
 app.use(webpackMiddleware (compiler, {
     hot: true,
-    publicPath: webpackConfig.output.publicPath
+    publicPath: webpackConfig.output.publicPath,
+    noInfo: true
 
 }));
 
