@@ -193,6 +193,8 @@ nav a {
     width: 30px;
     margin: 0 5px;
     border-radius: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
     
     
 }
